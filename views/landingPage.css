@@ -1,0 +1,21 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: aquamarine;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.box-element {
+  width: 30%
+}
+
+.gj-datepicker {
+    align-self: center;
+}
