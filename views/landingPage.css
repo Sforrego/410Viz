@@ -16,6 +16,11 @@
   width: 30%
 }
 
+.dataset-display {
+  margin-top: 20%;
+  margin-left: 10%
+}
+
 .gj-datepicker {
     align-self: center;
 }
