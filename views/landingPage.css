@@ -1,6 +1,6 @@
 .topbar {
   position: fixed;
-  top: 0;
+  top: 20;
   width: 100%;
   padding: 10px;
   background-color: aquamarine;
@@ -16,10 +16,6 @@
   width: 30%
 }
 
-.dataset-display {
-  margin-top: 20%;
-  margin-left: 10%
-}
 
 .gj-datepicker {
     align-self: center;
