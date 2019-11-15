@@ -5,7 +5,6 @@ class Default(Controller):
     return "boom"
 
   def POST(self, **kwargs):
-    parse()
     return kwargs
 
 class Foo(Controller):
