@@ -95,6 +95,28 @@ var heatmapChart = function(tsvFile) {
                 .attr("x", function(d, i) { return legendElementWidth * i; })
                 .attr("y", height + gridSize);
 
+            cards.on('mouseover', function(e) {
+                var offset = $('#test1').offset(), // { left: 0, top: 0 }
+                    x = 378;
+                y = 0;
+
+                //TODO fix location of the tooltip
+                //left = [x(data[d.series].data[d.point][0]) + margin.left, y(data[d.series].data[d.point][1]) + margin.top] + offset.left,
+                //top = e.position[1] + offset.top,
+                formatter = d3.format(".04f");
+
+                var content = '<h3>Total pull requests :</h3>' +
+                    '<p>' +
+                    '<span class="value">[' + e.value + ']</span>' +
+                    '</p>';
+
+                nvtooltip.show([x, 0], content);
+            });
+
+            cards.on('mouseout', function(e) {
+                nvtooltip.cleanup();
+            });
+
             legend.exit().remove();
 
         });
