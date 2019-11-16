@@ -11,9 +11,12 @@ $(document).ready(function() {
         }
         //alert( "repoUrl: " + repoUrl + " monthYear: " + monthYear );
         $.ajax({
-            url: "/scripts/example.py",
+            url: "/generate",
             dataType: 'json',
-            data: JSON.stringify({"repoUrl": repoUrl, "monthYear": monthYear}),
+            data: {
+                repoURL: $('#repoUrl').val(),
+                monthYear: $('#monthYear').val()
+            },
             type: 'POST',
             success: function(response) {
                 console.log(response);
