@@ -1,8 +1,7 @@
-[
-  {
+[{
     "Developer": "1",
     "Period": "1",
-    "Value": "16"
+    "Value": "88"
   },
   {
     "Developer": "1",
@@ -12,7 +11,7 @@
   {
     "Developer": "1",
     "Period": "3",
-    "Value": "0"
+    "Value": "44"
   },
   {
     "Developer": "1",
@@ -22,7 +21,7 @@
   {
     "Developer": "1",
     "Period": "5",
-    "Value": "0"
+    "Value": "33"
   },
   {
     "Developer": "1",
@@ -37,7 +36,7 @@
   {
     "Developer": "2",
     "Period": "2",
-    "Value": "2"
+    "Value": "22"
   },
   {
     "Developer": "2",
@@ -52,12 +51,12 @@
   {
     "Developer": "2",
     "Period": "5",
-    "Value": "0"
+    "Value": "33"
   },
   {
     "Developer": "2",
     "Period": "6",
-    "Value": "2"
+    "Value": "5"
   },
   {
     "Developer": "3",
@@ -72,69 +71,69 @@
   {
     "Developer": "3",
     "Period": "3",
+    "Value": "44"
+  },
+  {
+    "Developer": "3",
+    "Period": "4",
+    "Value": "0"
+  },
+  {
+    "Developer": "3",
+    "Period": "5",
+    "Value": "12"
+  },
+  {
+    "Developer": "3",
+    "Period": "6",
+    "Value": "2"
+  },
+  {
+    "Developer": "4",
+    "Period": "1",
+    "Value": "22"
+  },
+  {
+    "Developer": "4",
+    "Period": "2",
+    "Value": "33"
+  },
+  {
+    "Developer": "4",
+    "Period": "3",
+    "Value": "102"
+  },
+  {
+    "Developer": "4",
+    "Period": "4",
+    "Value": "33"
+  },
+  {
+    "Developer": "4",
+    "Period": "5",
+    "Value": "0"
+  },
+  {
+    "Developer": "4",
+    "Period": "6",
+    "Value": "2"
+  },
+  {
+    "Developer": "5",
+    "Period": "1",
+    "Value": "2"
+  },
+  {
+    "Developer": "5",
+    "Period": "2",
+    "Value": "0"
+  },
+  {
+    "Developer": "5",
+    "Period": "3",
     "Value": "8"
   },
   {
-    "Developer": "3",
-    "Period": "4",
-    "Value": "0"
-  },
-  {
-    "Developer": "3",
-    "Period": "5",
-    "Value": "0"
-  },
-  {
-    "Developer": "3",
-    "Period": "6",
-    "Value": "2"
-  },
-  {
-    "Developer": "4",
-    "Period": "1",
-    "Value": "0"
-  },
-  {
-    "Developer": "4",
-    "Period": "2",
-    "Value": "0"
-  },
-  {
-    "Developer": "4",
-    "Period": "3",
-    "Value": "0"
-  },
-  {
-    "Developer": "4",
-    "Period": "4",
-    "Value": "0"
-  },
-  {
-    "Developer": "4",
-    "Period": "5",
-    "Value": "0"
-  },
-  {
-    "Developer": "4",
-    "Period": "6",
-    "Value": "2"
-  },
-  {
-    "Developer": "5",
-    "Period": "1",
-    "Value": "2"
-  },
-  {
-    "Developer": "5",
-    "Period": "2",
-    "Value": "0"
-  },
-  {
-    "Developer": "5",
-    "Period": "3",
-    "Value": "8"
-  },
-  {
     "Developer": "5",
     "Period": "4",
     "Value": "2"
@@ -152,27 +151,27 @@
   {
     "Developer": "6",
     "Period": "1",
-    "Value": "2"
+    "Value": "11"
   },
   {
     "Developer": "6",
     "Period": "2",
-    "Value": "0"
+    "Value": "22"
   },
   {
     "Developer": "6",
     "Period": "3",
-    "Value": "2"
+    "Value": "33"
   },
   {
     "Developer": "6",
     "Period": "4",
-    "Value": "0"
+    "Value": "44"
   },
   {
     "Developer": "6",
     "Period": "5",
-    "Value": "0"
+    "Value": "4"
   },
   {
     "Developer": "6",
@@ -192,21 +191,21 @@
   {
     "Developer": "7",
     "Period": "3",
-    "Value": "0"
+    "Value": "11"
   },
   {
     "Developer": "7",
     "Period": "4",
-    "Value": "0"
+    "Value": "22"
   },
   {
     "Developer": "7",
     "Period": "5",
-    "Value": "0"
+    "Value": "33"
   },
   {
     "Developer": "7",
     "Period": "6",
-    "Value": "0"
+    "Value": "44"
   }
 ]
