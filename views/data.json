@@ -208,5 +208,65 @@
     "Developer": "7",
     "Period": "6",
     "Value": "0"
+  },
+  {
+    "Developer": "8",
+    "Period": "1",
+    "Value": "0"
+  },
+  {
+    "Developer": "8",
+    "Period": "2",
+    "Value": "2"
+  },
+  {
+    "Developer": "8",
+    "Period": "3",
+    "Value": "2"
+  },
+  {
+    "Developer": "8",
+    "Period": "4",
+    "Value": "0"
+  },
+  {
+    "Developer": "8",
+    "Period": "5",
+    "Value": "2"
+  },
+  {
+    "Developer": "8",
+    "Period": "6",
+    "Value": "0"
+  },
+  {
+    "Developer": "9",
+    "Period": "1",
+    "Value": "6"
+  },
+  {
+    "Developer": "9",
+    "Period": "2",
+    "Value": "22"
+  },
+  {
+    "Developer": "9",
+    "Period": "3",
+    "Value": "0"
+  },
+  {
+    "Developer": "9",
+    "Period": "4",
+    "Value": "0"
+  },
+  {
+    "Developer": "9",
+    "Period": "5",
+    "Value": "33"
+  },
+  {
+    "Developer": "9",
+    "Period": "6",
+    "Value": "5"
   }
 ]
