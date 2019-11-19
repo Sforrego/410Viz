@@ -1,5 +1,5 @@
 import json
-from getinfo import get_pulls
+from scripts import getinfo
 
 def create_file(pulls,file_path):
     with open(file_path,'w+') as f:
@@ -10,5 +10,5 @@ def create_file(pulls,file_path):
 
 if __name__ == '__main__':
     repo = 'atom/atom'
-    pulls = get_pulls(repo=repo,n=5)
+    pulls = getinfo.get_pulls(repo=repo,n=5)
     create_file(pulls, 'cache/atom.json')
