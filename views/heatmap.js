@@ -14,9 +14,9 @@ var dynamicLongestDeveloperLength = 200;
 
 var margin = { top: 50, right: dynamicLongestDeveloperLength, bottom:200, left: dynamicLongestDeveloperLength },
     width = windowWidth - margin.left - margin.right,
-    height = windowHeight - margin.top - margin.bottom,
+    height = (Math.floor((windowHeight - margin.top - margin.bottom) / developers2fortesting.length) < 40) ? developers2fortesting.length * 40 + margin.top + margin.bottom : windowHeight - margin.top - margin.bottom,
     gridSizeX = Math.floor(width / 6),
-    gridSizeY = Math.floor(height / developers2fortesting.length), // todo: need to set a limit
+    gridSizeY = (Math.floor(height / developers2fortesting.length) < 40) ? 40 : Math.floor(height / developers2fortesting.length),
     legendElementWidth = 100,
     buckets = 9,
     colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
@@ -26,6 +26,7 @@ var margin = { top: 50, right: dynamicLongestDeveloperLength, bottom:200, left: 
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom - 100)
+    .attr("overflow", "auto")
     .append("g")
     .attr("transform", "translate(" + margin.left +  "," + margin.top + ")");
 
