@@ -48,6 +48,7 @@ text.axis-worktime {
     background-color: rgba(255,255,255,1);
     padding: 10px;
     border: 1px solid #ddd;
+    overflow-y: visible;
 
     font-family: Arial;
     font-size: 13px;
@@ -83,4 +84,6 @@ text.axis-worktime {
 .nvtooltip span {
     display: inline-block;
     margin: 2px 0;
+    text-align: center;
+    overflow-y: auto;
 }

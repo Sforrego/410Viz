@@ -97,20 +97,20 @@ var heatmapChart = function(tsvFile) {
 
             cards.on('mouseover', function(e) {
                 var offset = $('#test1').offset(), // { left: 0, top: 0 }
-                    x = 378;
-                y = 0;
+                    x = this.x.animVal.value + 75;
+                    y = this.y.animVal.value + 120;
 
-                //TODO fix location of the tooltip
-                //left = [x(data[d.series].data[d.point][0]) + margin.left, y(data[d.series].data[d.point][1]) + margin.top] + offset.left,
-                //top = e.position[1] + offset.top,
-                formatter = d3.format(".04f");
+                var content = '<span>Total number of pull requests: </span>' +
+                    '<span class="value" style="color:#F79742;"><b> [' + e.value +']</b></span> <br>'
+                //    '<span> Branches modified: </span><br>';
 
-                var content = '<h3>Total pull requests :</h3>' +
-                    '<p>' +
-                    '<span class="value">[' + e.value + ']</span>' +
-                    '</p>';
+                //TODO add part for branches
+                // for (branch in branches){
+                //     content += '<span class="tooltip-text" style="color:SlateBlue;"><b> '+ branches[branch] + '</b></span><br>';
+                // }
+                //
 
-                nvtooltip.show([x, 0], content);
+                nvtooltip.show([x, y], content);
             });
 
             cards.on('mouseout', function(e) {
