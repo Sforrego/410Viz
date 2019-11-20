@@ -88,6 +88,27 @@ var heatmapChart = function(data) {
             return d.Value;
         });
 
+        cards.on('mouseover', function (e) {
+            x = this.x.animVal.value + 75;
+            y = this.y.animVal.value + 120;
+
+            var content = '<span>Total number of pull requests: </span>' +
+                    '<span class="value" style="color:#F79742;"><b> [' + e.value + ']</b></span> <br>'
+             //    '<span> Branches modified: </span><br>';
+
+            //TODO add part for branches
+            // for (branch in branches){
+            //     content += '<span class="tooltip-text" style="color:SlateBlue;"><b> '+ branches[branch] + '</b></span><br>';
+            // }
+            //
+
+            nvtooltip.show([x, y], content);
+            });
+
+        cards.on('mouseout', function (e) {
+            nvtooltip.cleanup();
+        });
+
         cards.exit().remove();
 
         var legend = svg.selectAll(".legend")
