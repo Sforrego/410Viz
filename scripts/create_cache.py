@@ -1,7 +1,11 @@
 import json
 from scripts import getinfo
+import os
 
 def create_file(pulls,file_path):
+    if not os.path.exists("scripts/cache"):
+        os.makedirs("scripts/cache")
+
     with open(file_path,'w+') as f:
         json_data = {}
         for index, pull in enumerate(pulls):
