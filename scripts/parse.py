@@ -47,7 +47,7 @@ def parse(repoURL, monthYear):
         devCounts.append({"Developer": dev, "Count": sum(devTable[dev].values())})
     data = formatData(devTable)
     print(data)
-    return jsonify({"nameLength": len(max(devTable.keys(), key=len)), "lineCount": devCounts, "data": data})
+    return jsonify({"devList": list(devTable.keys()), "nameLength": len(max(devTable.keys(), key=len)), "lineCount": devCounts, "data": data})
 
 def formatData(data):
     formatted = []
