@@ -123,7 +123,7 @@ var heatmapChart = function(data) {
         });
 };
 
-heatmapChart(datasets[0]);
+//heatmapChart(datasets[0]);
 
 var datasetpicker = d3.select("#dataset-picker").selectAll(".dataset-button")
     .data(datasets);
