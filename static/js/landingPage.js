@@ -319,6 +319,9 @@ var periodLabel = svg.selectAll(".periodLabel")
     .attr("transform", "translate(" + gridSizeX / 2 + ", -6)");
 
 var heatmapChart = function(data) {
+        console.log(data);
+        // this loads the multiselect menu with the developers names
+
 
         //d3.json(data, function (data) {
 
@@ -359,6 +362,9 @@ var heatmapChart = function(data) {
         });
 
         cards.exit().remove();
+
+        // console.log(cards);
+
 
         var legend = svg.selectAll(".legend")
             .data([0].concat(colorScale.quantiles()), function (d) {
@@ -427,13 +433,120 @@ $(document).ready(function() {
             },
             type: 'POST',
             success: function(response) {
-                console.log(response);
-                heatmapChart(json);
+                // console.log(response);
+              var devs = developers2fortesting;
+              var select_data = [];
+              for (var i in devs) {
+                select_data.push({label:devs[i],value:devs[i]});
+              }
+              $("#menu").multiselect('dataprovider', select_data);
+              heatmapChart(json);
             },
             error: function(error) {
                 console.log(error);
             }
         })
       });
+
+      $('#update').click(function() {
+        var developers = developers2fortesting
+
+        var values = $('#menu').val()
+        var values2 = values;
+        for(var i = values.length-1; i < developers.length;i++){
+          values2.push("");
+        }
+
+        developerLabel.data(values2);
+        developerLabel.text(function (d) { return d; });
+        var new_data = updateData(json, developers2fortesting, values);
+
+        updateHeatmap(new_data, json);
+        // get a list of the developers that got selected but just numbers
+
+      });
+
 });
 
+// d3.select("#order").on("change",function(){
+//   order(this.value);
+// });
+//
+// function order(value){
+//  if(value=="alpha"){
+//    console.log(`Should transition ${value}`);
+//    var t = svg.transition().duration(3000);
+//    // t.selectAll("rect")
+//    //   .attr("y", function(d) {
+//    //     console.log(d);
+//    //     return (d.Developer - 1) * gridSizeY; })
+//    //   ;
+//    developerLabel.data(developers2fortesting.sort());
+//    developerLabel.text(function (d) { return d; });
+//
+//    cards.attr("x", function (d) {
+//        return (d.Period - 1) * gridSizeX;
+//    })
+//    cards.attr("y", function (d) {
+//        return (d.Developer - 1) * gridSizeY;})
+//
+// }};
+
+// imagine i have a dictionary (id: user) and the data ({id, period, value})
+
+function filter_by_name(idname,data,names_to_filter){
+  filtered_data = [];
+  for (i in data){
+    console.log(idname[data[i].Developer])
+    if (names_to_filter.includes(idname[data[i].Developer])){
+      filtered_data.push(data[i])
+    }
+  }
+  return filtered_data;
+};
+
+function updateHeatmap(data, original_data){
+  //console.log(data);
+  var colorScale = d3.scale.quantile()
+      .domain([0, buckets - 1, Math.max.apply(Math, original_data.map(function (d) {
+          return d.Value;
+      }))])
+      .range(colors);
+
+  var heatmap = svg.selectAll(".Period")
+  .data(data)
+  .transition()
+    .duration(500)
+    .style("fill", function (d) {
+        return colorScale(d.Value);
+    });
+}
+
+function updateData(data, old_devs, new_devs){
+  var devs_num = [];
+  var new_data = [];
+  var temp_data = JSON.parse(JSON.stringify(data));
+
+
+  for (var i = 0 ; i<  old_devs.length;i++){
+    if (new_devs.includes(old_devs[i])){
+      devs_num.push((parseInt(i, 10)+1).toString(10));
+    }
+  }
+  console.log(devs_num);
+  for (var j = 0; j < data.length; j++){
+    // is data changing when temp data does.
+    if (devs_num.includes(data[j].Developer.toString(10))){
+      console.log("in the iiff");
+      console.log(devs_num.indexOf(data[j].Developer.toString(10)));
+      temp_data[j].Developer = devs_num.indexOf(data[j].Developer.toString(10))+1;
+      new_data.push(temp_data[j]);
+    }
+    console.log(data[j].Developer);
+    console.log(j);
+    console.log(data.length);
+  }
+  console.log(new_data);
+  return new_data;
+
+}
