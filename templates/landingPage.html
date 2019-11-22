@@ -26,7 +26,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
-
         <link rel="stylesheet" href="{{ url_for('static', filename='css/landingPage.css') }}">
     </head>
 
@@ -56,20 +55,15 @@
             </div>
         </div>
 
-    <!-- Row Order:
-      <select id="order">
-      <option value="pulls">Pull requests</option>
-      <option value="alpha">Alphabetically</option>
-      </select>
-      </select> -->
-
-
 
       <div>
-          <select class="multiselect" multiple="multiple" id="menu">          <!-- <select multiple id="menu"> -->
+          <select class="multiselect" multiple="multiple" id="menu">
           </select>
-
-          <button type="button" id="update" class="btn">Update</button>
+          <button class="btn-save btn btn-primary btn-sm" id="update">Save</button>
+          <script>
+              document.getElementById('menu').style.visibility='hidden';
+              document.getElementById('update').style.visibility='hidden';
+          </script>
       </div>
 
 
