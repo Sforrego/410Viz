@@ -59,5 +59,5 @@ def formatData(data):
     for dev in devs:
         count += 1
         for period in data[dev]:
-            formatted.append({"Developer": str(count), "Period": period, "Value": str(data[dev][period])})
+            formatted.append({"Developer": str(count), "Period": period, "Value": str(data[dev][period]), "TotalValue": str(sum(data[dev].values()))})
     return formatted

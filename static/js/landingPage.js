@@ -94,6 +94,21 @@ var periodLabel = svg.selectAll(".periodLabel")
             return d.Value;
         });
 
+        cards.on('mouseover', function (e) {
+            var offset = $('#chart > svg > g').offset();
+            var x = this.x.animVal.value + offset.left + 120;
+            var y = this.y.animVal.value + offset.top + 30;
+
+            var content = '<span>Total number of pull requests: </span>' +
+                '<span class="value" style="color:#F79742;"><b> [' + e.Value + '/' + e.TotalValue + ']</b></span> <br>';
+
+            nvtooltip.show([x, y], content);
+        });
+
+        cards.on('mouseout', function (e) {
+            nvtooltip.cleanup();
+        });
+
         cards.exit().remove();
 
         var legend = svg.selectAll(".legend")
@@ -174,4 +189,74 @@ $(document).ready(function() {
         })
       });
 });
+
+// Tooltip js
+(function($) {
+
+    var nvtooltip = window.nvtooltip = {};
+
+    nvtooltip.show = function(pos, content, gravity, dist) {
+        var container = $('<div class="nvtooltip">');
+
+        gravity = gravity || 's';
+        dist = dist || 20;
+
+        container
+            .html(content)
+            .css({left: -1000, top: -1000, opacity: 0})
+            .appendTo('body');
+
+        var height = container.height() + parseInt(container.css('padding-top'))  + parseInt(container.css('padding-bottom')),
+            width = container.width() + parseInt(container.css('padding-left'))  + parseInt(container.css('padding-right')),
+            windowWidth = $(window).width(),
+            windowHeight = $(window).height(),
+            scrollTop = $('body').scrollTop(),
+            left, top;
+
+
+        switch (gravity) {
+            case 'e':
+            case 'w':
+            case 'n':
+                left = pos[0] - (width / 2);
+                top = pos[1] + dist;
+                if (left < 0) left = 5;
+                if (left + width > windowWidth) left = windowWidth - width - 5;
+                if (scrollTop + windowHeight < top + height) top = pos[1] - height - dist;
+                break;
+            case 's':
+                left = pos[0] - (width / 2);
+                top = pos[1] - height - dist;
+                if (left < 0) left = 5;
+                if (left + width > windowWidth) left = windowWidth - width - 5;
+                if (scrollTop > top) top = pos[1] + dist;
+                break;
+        }
+
+        container
+            .css({
+                left: left,
+                top: top,
+                opacity: 1
+            });
+    };
+
+    nvtooltip.cleanup = function() {
+        var tooltips = $('.nvtooltip');
+
+        // remove right away, but delay the show with css
+        tooltips.css({
+            'transition-delay': '0 !important',
+            '-moz-transition-delay': '0 !important',
+            '-webkit-transition-delay': '0 !important'
+        });
+
+        tooltips.css('opacity',0);
+
+        setTimeout(function() {
+            tooltips.remove()
+        }, 500);
+    };
+
+})(jQuery);
 
