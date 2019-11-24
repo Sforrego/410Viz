@@ -4,7 +4,7 @@ from datetime import datetime
 
 def parse(repoURL, monthYear):
     monthYear = datetime.strptime(monthYear, "%m-%Y")
-    print(monthYear)
+    # print(monthYear)
     filepath = 'scripts/cache/' + repoURL.split('/')[1] + '.json'
     devTable = {}
     try:
@@ -17,14 +17,14 @@ def parse(repoURL, monthYear):
         if (cache[key]["created_at"] and cache[key]["merged_at"]):
             created = datetime.strptime(cache[key]["created_at"], "%Y-%m-%dT%H:%M:%SZ")
             merged = datetime.strptime(cache[key]["merged_at"], "%Y-%m-%dT%H:%M:%SZ")
-            print(created)
-            print(merged)
+            # print(created)
+            # print(merged)
             if (merged.month == monthYear.month and merged.year == monthYear.year):
                 dev = cache[key]["user"]["login"]
                 if devTable.get(dev) == None:
                     devTable[dev] = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0}
                 days = (merged - created).days
-                print(days)
+                # print(days)
                 if days <= 1:
                     devTable[dev]["1"] += 1
                 elif days <= 7:

@@ -111,6 +111,9 @@ var periodLabel = svg.selectAll(".periodLabel")
 
         cards.exit().remove();
 
+        // console.log(cards);
+
+
         var legend = svg.selectAll(".legend")
             .data([0].concat(colorScale.quantiles()), function (d) {
                 return d;
@@ -142,6 +145,7 @@ var periodLabel = svg.selectAll(".periodLabel")
 
         legend.exit().remove();
         //});
+
 };
 
 //heatmapChart(datasets[0]);
@@ -181,6 +185,7 @@ $(document).ready(function() {
                 console.log(response);
                 setDynamicLongestDeveloperLength(response.nameLength);
                 setDeveloperNameArr(response.devList);
+
                 heatmapChart(response.data);
             },
             error: function(error) {
@@ -188,6 +193,9 @@ $(document).ready(function() {
             }
         })
       });
+
+
+
 });
 
 // Tooltip js
@@ -259,4 +267,3 @@ $(document).ready(function() {
     };
 
 })(jQuery);
-
