@@ -277,7 +277,7 @@ var windowWidth = $(window).width();
 
 var developers = ["Dev1", "SDFASFA SASD", "Dev3", "hello world", "jacob", "Dev6", "Dev7"];
 
-var developers2fortesting = ["Dev1", "SDFASFA SASD", "Dev3", "hello world", "jacob", "Dev6", "Dev7", "here is long name", "another one blah"];
+var developers2fortesting = ["Dev1", "Dev2", "Dev3", "Dev4", "Dev5", "Dev6", "Dev7", "Dev8", "MyStepDadGreg"];
 
 var dynamicLongestDeveloperLength = 200;
 
@@ -289,7 +289,8 @@ var margin = { top: 50, right: dynamicLongestDeveloperLength, bottom:200, left: 
     legendElementWidth = 100,
     buckets = 9,
     colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"], // alternatively colorbrewer.YlGnBu[9]
-    periods = ['\u2264'+"1day", '\u2264'+"7days", '\u2264'+"30days", '\u2264'+"90days", '\u2264'+"180days", '\u2265'+"180days"];
+    //periods = ['\u2264'+"1day", '\u2264'+"7days", '\u2264'+"30days", '\u2264'+"90days", '\u2264'+"180days", '\u2265'+"180days"];
+    periods = ["Less than a day", '1 to 3 days', '4 to 7 days', "8 to 14 days", "15 to 21 days", "More than 21 days"];
     //datasets = ["data.json", "data2.json"];
     //datasets = json;
 
@@ -300,10 +301,31 @@ var svg = d3.select("#chart").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left +  "," + margin.top + ")");
 
+var periodAxisLabel = d3.select("g")
+    .append("text")
+    .text("Time taken to resolve pull request")
+    .attr("font-weight", 700)
+    .attr("class", "mono")
+    .style("text-decoration", "underline")  
+    .attr("y", -30)
+    .attr("x", width/3)
+    .style("font-size", "16px");
+
+var developerAxisLabel = d3.select("g")
+    .append("text")
+    .text("Developers")
+    .attr("font-weight", 700)
+    .attr("class", "mono")
+    .style("text-decoration", "underline")  
+    .style("font-size", "16px")
+    .attr("x", -150)
+    .attr("y", 20);
+
 var developerLabel = svg.selectAll(".developerLabel")
     .data(developers2fortesting)
     .enter().append("text")
     .text(function (d) { return d; })
+    .attr("class", "mono")
     .attr("x", 0)
     .attr("y", function (d, i) { return i * gridSizeY; })
     .style("text-anchor", "end")
@@ -316,7 +338,11 @@ var periodLabel = svg.selectAll(".periodLabel")
     .attr("x", function(d, i) { return i * gridSizeX; })
     .attr("y", 0)
     .style("text-anchor", "middle")
+    .attr("class", "mono")
     .attr("transform", "translate(" + gridSizeX / 2 + ", -6)");
+
+
+
 
 var heatmapChart = function(data) {
 
@@ -372,7 +398,7 @@ var heatmapChart = function(data) {
             .attr("x", function (d, i) {
                 return legendElementWidth * i;
             })
-            .attr("y", height + 10)
+            .attr("y", height + 15)
             .attr("width", legendElementWidth)
             .attr("height", 30)
             .style("fill", function (d, i) {
@@ -382,12 +408,20 @@ var heatmapChart = function(data) {
         legend.append("text")
             .attr("class", "mono")
             .text(function (d) {
-                return "≥ " + Math.round(d);
+                return "≤ " + Math.round(d);
             })
             .attr("x", function (d, i) {
                 return legendElementWidth * i;
             })
             .attr("y", height + 55);
+
+        legend.append("text")
+            .attr("class", "mono")
+            .text("Number of pull requests resolved in a given timeframe")
+            .style("font-size", "16px")
+            .style("text-decoration", "underline")  
+            .attr("x", width / 3.5)
+            .attr("y", height + 80);
 
         legend.exit().remove();
         //});

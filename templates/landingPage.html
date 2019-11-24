@@ -47,6 +47,9 @@
                 <div class = "box-element">
                         <button type="button" id="submit" class="btn">Generate Visualization</button>
                 </div>
+                <div>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal">More Info</button>
+                </div>
             </div>
         </div>
     <div id="chart" style="overflow: scroll"></div>
@@ -54,5 +57,43 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/nvtooltip.js') }}"></script>
 
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">About This App</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              <p>
+                This web app is designed to help project managers visualize how quickly each member of their
+                team contribute to the ongoing evolution of their repositry as well as how often.
+              </p>
+
+              <p>
+                Below is a heatmap how many pull requests each team member resolves as well as how quickly they
+                do so. The y-axis lists the team members contributing to the repositry and the x-axis indicates
+                how long it takes for a pull request to be resolved.
+              </p>
+
+              <p>
+                The color of each heatmap cell represents how many pull requests a given developer resolves in
+                a given timeframe.
+              </p>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
     </body>
 </html>
