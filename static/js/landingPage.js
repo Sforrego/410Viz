@@ -3,6 +3,8 @@ var windowWidth = $(window).width();
 
 var developerNameOnYAxis = [];
 
+var responseData;
+
 var dynamicLongestDeveloperLength = 0;
 
 var setDynamicLongestDeveloperLength = function (nameLength) {
@@ -26,6 +28,7 @@ var margin = { top: 50, right: dynamicLongestDeveloperLength, bottom:200, left: 
     periods = ['\u2264'+"1day", '\u2264'+"7days", '\u2264'+"30days", '\u2264'+"90days", '\u2264'+"180days", '\u2265'+"180days"];
     //datasets = ["data.json", "data2.json"];
     //datasets = json;
+
 
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -54,7 +57,7 @@ var periodLabel = svg.selectAll(".periodLabel")
 
 
 
-    console.log("here is name length " + dynamicLongestDeveloperLength)
+    // console.log("here is name length " + dynamicLongestDeveloperLength)
 
         //d3.json(data, function (data) {
 
@@ -146,6 +149,31 @@ var periodLabel = svg.selectAll(".periodLabel")
         legend.exit().remove();
         //});
 
+        $('#update').click(function() {
+
+      // updates developers labels creates new data and updates heatmap
+
+      var developers = [];
+      var select = document.getElementById('menu');
+      for(var i =0; i < select.length; i++){
+          developers.push(select.options[i].text);
+      }
+
+      // values receives the selected options
+      var values = $('#menu').val()
+      // for(var i = values.length-1; i < developers.length;i++){
+      //   values.push("");
+      // }
+
+
+      var new_data = updateData(responseData, developers, values);
+
+      updateHeatmap(new_data, svg);
+      // get a list of the developers that got selected but just numbers
+
+      });
+
+
 };
 
 //heatmapChart(datasets[0]);
@@ -186,6 +214,17 @@ $(document).ready(function() {
                 setDynamicLongestDeveloperLength(response.nameLength);
                 setDeveloperNameArr(response.devList);
 
+                // populates the multi select
+                var devs = response.devList;
+                var select_data = [];
+                for (var i in devs) {
+                  select_data.push({label:devs[i],value:devs[i]});
+                }
+                $("#menu").multiselect('dataprovider', select_data);
+                document.getElementById('menu').style.visibility='visible';
+                document.getElementById('update').style.visibility='visible';
+                //
+                responseData = response.data;
                 heatmapChart(response.data);
             },
             error: function(error) {
@@ -267,3 +306,38 @@ $(document).ready(function() {
     };
 
 })(jQuery);
+
+function updateHeatmap(data, svg){
+  // THIS CHANGES THE COLOR SCALE BECAUSE ITS USING NEW DATA
+  svg.selectAll("*").remove();
+  d3.select("svg").remove();
+
+  heatmapChart(data);
+}
+
+function updateData(data, old_devs, new_devs){
+  var devs_num = [];
+  var new_data = [];
+
+  setDeveloperNameArr(new_devs);
+
+  // clon data into temp_data
+  var temp_data = JSON.parse(JSON.stringify(data));
+
+  // get the position of the new devs
+  for (var i = 0 ; i<  old_devs.length;i++){
+    if (new_devs.includes(old_devs[i])){
+      devs_num.push((parseInt(i, 10)+1).toString(10));
+    }
+  }
+
+  // rewrite the data by selecting the new_devs and asigning them new positions
+  for (var j = 0; j < data.length; j++){
+    if (devs_num.includes(data[j].Developer.toString(10))){
+      temp_data[j].Developer = devs_num.indexOf(data[j].Developer.toString(10))+1;
+      new_data.push(temp_data[j]);
+    }
+  }
+    return new_data;
+
+}
