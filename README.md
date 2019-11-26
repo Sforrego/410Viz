@@ -32,3 +32,11 @@ Adjusting heatmap data input for receiving our data format.
 Made heatmap from static axis to dynamic/responsive axis.
 Integrate heatmap with received data.
 Took part in making the slides used in our video.
+
+## Sebastian
+Managed API requests and how to get them.
+Created python functions to create and read the cache for the data.
+getinfo read_cache and create_cache .py
+Integrated the multi-select filter with the existing heat map.
+Modified the LandingPage
+Part of the narration.
