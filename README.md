@@ -31,3 +31,4 @@ Set up data format and template for data parser development.
 Adjusting heatmap data input for receiving our data format.
 Made heatmap from static axis to dynamic/responsive axis.
 Integrate heatmap with received data.
+Took part in making the slides used in our video.
