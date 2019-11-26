@@ -25,3 +25,9 @@ Created nvtooltip.js
 Added a hover tooptip function to the heatmap displaying the card data
 Took part in making the slides used in our video
 
+## Joy
+Implemented heatmap viz, modified landingPage
+set up data format and template for data parser development
+adjusting heatmap data input for receiving our data format
+made heatmap from static axis to dynamic/responsive axis
+integrate heatmap with received data
