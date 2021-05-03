@@ -42,6 +42,6 @@ Modified the LandingPage.
 Part of the narration.
 
 ## Michelle
-Wrote the Python code in Flask framework
-Provided API endpoint to allow frontend to retrieve parsed data (app.py)
-Parse data from backend and return formatted data to frontend for display (parse.py)
+Wrote the Python code in Flask framework.
+Provided API endpoint to allow frontend to retrieve parsed data (app.py).
+Parse data from backend and return formatted data to frontend for display (parse.py).
