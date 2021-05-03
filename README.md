@@ -40,3 +40,8 @@ getinfo read_cache and create_cache .py.
 Integrated the multi-select filter with the existing heat map.
 Modified the LandingPage.
 Part of the narration.
+
+## Michelle
+Wrote the Python code in Flask framework
+Provided API endpoint to allow frontend to retrieve parsed data (app.py)
+Parse data from backend and return formatted data to frontend for display (parse.py)
